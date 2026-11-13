@@ -1,0 +1,21 @@
+{
+  "grammars": [
+    {
+      "name": "ohh",
+      "camelcase": "Ohh",
+      "scope": "source.ohh",
+      "path": ".",
+      "file-types": ["ohh"],
+      "injection-regex": "^ohh$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for OHH (Open Hand History)",
+    "authors": [],
+    "links": {
+      "repository": "https://github.com/REPLACE_ME/tree-sitter-ohh"
+    }
+  }
+}
