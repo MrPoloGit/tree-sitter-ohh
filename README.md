@@ -10,7 +10,7 @@ root here is "one or more top-level values," not "exactly one."
 ## Status
 
 Generates cleanly with `tree-sitter generate` and parses the full corpus
-at `../ohh/corpus/` with **zero `ERROR` nodes**, including all three
+at `../ohh-data/corpus/` with **zero `ERROR` nodes**, including all three
 `invalid/` fixtures, which is correct: they are semantically invalid
 (bad enum value, an illegal bet in preflop, a missing required field),
 not syntactically invalid. As with PHH, L0 (grammar) and L1 (registry-
@@ -19,8 +19,8 @@ driven semantic checks, via `ohh-ls`) are deliberately separate layers.
 Covers: objects, arrays, strings (with escape sequences), numbers,
 `true`/`false`/`null`, and the blank-line-tolerant multi-hand document
 root described above. No OHH-specific field or enum structure is baked
-into the grammar itself (`ohh/registry/fields.json`,
-`ohh/registry/enums.json` are the source of truth there); the grammar
+into the grammar itself (`ohh-data/registry/fields.json`,
+`ohh-data/registry/enums.json` are the source of truth there); the grammar
 only has to know JSON's shape, and that more than one top-level object
 is allowed.
 
@@ -34,7 +34,7 @@ is allowed.
 | `outline.scm` | One outline entry per hand, keyed by that hand's own `game_number`, never assumed to be the first/only hand in the file | `tree-sitter query` against both single- and multi-hand fixtures. **Not validated against a live Zed install**, matches Zed's documented `@item`/`@name` convention but confirm before shipping |
 
 The enum-valued-key special case in `highlights.scm` and `ohh-ls`'s own
-hover/completion both read `ohh/registry/enums.json`, but as two separate
+hover/completion both read `ohh-data/registry/enums.json`, but as two separate
 copies of the same facts: a tree-sitter query can't read JSON at runtime,
 so grammar-level highlighting and server-level semantics agree by having
 each been checked against the registry, not by one depending on the
